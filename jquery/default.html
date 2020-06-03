@@ -1,0 +1,115 @@
+<html>
+
+    <head>
+        <title>jquery</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.structure.css">
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.theme.css">
+    </head>
+
+    <body>
+        <h1>JQUERY</h1>
+
+        <div id="div1" class="mydivs">
+            <p id="para1"><b>paragragh&nbsp;</b>para 1</p>
+            <p id="para2">para 2</p>
+        </div>
+
+        <div id="div2" class="mydivs">
+            <p id="para2">para 3</p>
+        </div>
+        
+        <div id="div3" class="mydivs">
+            <ul>
+                <li>item 1</li>
+                <li>item 2</li>
+                <li>item 3</li>
+                <li>item 4</li>
+            </ul>
+        </div>
+
+
+        <button id="btn1">Hide</button>
+        <button id="btn2">Show</button>
+        <button id="btn3">Toggle</button>
+        <button id="btn4">cube animate</button>
+        <button id="btn5">alert</button>
+        <button id="btn6">append in div 2</button>
+
+        <div id="div4" class="mydivs">
+            <p align=center>cube</p>
+        </div>
+
+    </body>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> -->
+    <script src="js/jquery/jquery-3.5.1.js"></script>
+    <script src="jquery-ui/jquery-ui.js"></script>
+    <script>
+
+        $(document).ready(function(){
+
+            // $("button").mouseenter(fn1);
+            // $("button").mouseleave(fn1);
+            // $("button").hover(fn1);
+
+            $("#btn1").click(function(){
+                 $("#div1").slideUp();
+            });
+
+            $("#btn2").dblclick(function(){
+                $("#div1").slideDown();
+            });
+
+            //callback and chanining
+            $("#btn3").click(function(){
+                // $("#div1").slideUp(3000,msg);    // callback function
+                // $("#div1").slideDown(3000,msg);
+                $("#btn3").click(function(){
+                $("#div1").slideUp(1000).slideDown(2000).fadeOut(1000).fadeIn(2000);
+            });
+            });
+
+            function msg(){
+                alert("finished");
+            }
+            function fn1()
+            {
+                $(".mydivs").fadeToggle(2000);
+            }
+
+            function fn2()
+            {
+                $(".mydivs").fadeToggle(2000);
+            }
+
+            //cube animation
+            $("#btn4").click(function(){
+                $("#div4").animate({
+                    left: '150px',
+                    opacity: '1',
+                    height: '100px',
+                    width: '100px'
+                },3000);   //slow,fast
+            });
+
+            //alert the text
+            //()html ,()text, attr() ,css()
+            $("#btn5").dblclick(function(){
+                //alert($("#div1").html());
+                alert($("#div1").css("font-size"));
+                //$("#div1").text("HI WORD CHANGED")
+            });
+
+            //append(),remove(),before(),after()... 
+            $("#btn5").click(function(){
+                $("#div2").remove();
+            });
+
+            //addclass(),removeClass().....
+            
+        });
+
+    </script>
+</html>

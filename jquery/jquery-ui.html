@@ -1,0 +1,147 @@
+<html>
+
+    <head>
+        <title>jquery</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.structure.css">
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.theme.css">
+    </head>
+
+    <body>
+
+        <h1>JQUERY UI</h1><hr>
+
+        DatePicker
+        <!-- <div id="div1">
+            <label for="dateinput">Date picker:</label>
+            <input id="dateinput" type="text" placeholder="click to select date"><br><br><br><br>
+            <hr>Tool Tip:<br>
+            <img src="/images/Screenshot 2020-05-30 at 17.19.20.png" height="300px" width="500px" id="img1" title="Photo">
+        </div>
+        <br><br><br><hr>
+
+        Accordian:<br>
+        <div id="panel">
+            <h3>Acoordian widget-1</h3>
+            <p>This is <b>paragraph</b></p>
+            <h3>Acoordian widget-2</h3>
+            <p>This is <b>paragraph</b></p>
+            <h3>Acoordian widget-3</h3>
+            <p>This is <b>paragraph</b></p>
+            <h3>Acoordian widget-4</h3>
+            <p>This is <b>paragraph</b></p>
+        </div>
+        <br><br><br><hr> -->
+
+        MessageBox:<br>
+        <button id="btn1">click to show</button>
+        <div id="messageBox" title="messageBox">
+            <img src="/images/Screenshot 2020-05-30 at 17.19.20.png" height="300px" width="500px" id="img1" title="Photo">
+        </div>
+        <br><br><br><hr>
+
+        Autocomplete:<br>
+        <label for="cityText">Enter favourite city:</label>
+        <input id="cityText" type="text">
+        <br><br><br><hr>
+
+        Draggable:<br>
+        <div id="div4" class="mydivs">
+            <p align=center>cube</p>
+        </div>
+
+    </body>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> -->
+    <script src="js/jquery/jquery-3.5.1.js"></script>
+    <script src="jquery-ui/jquery-ui.js"></script>
+    <script>
+
+        $(document).ready(function(){
+
+            //DatePicker 
+            $("#dateinput").datepicker({
+                numberOfMonths:1,
+                changeYear: true,
+                changeMonth: true,
+                showWeek: true,
+                //weekHeader:"Wk.No",
+                showOtherMonths:true,
+                minDate: new Date(1990,1,1),
+                maxDate: new Date(2024,1,1)
+            });
+
+            //Image Tooltip
+            $("img").tooltip({
+                track: true,
+                content: "Screenshot",
+                show: {
+                    //effect: "blind",
+                    effect: "highlight",
+                    duration: 1000
+                }
+            });
+
+            //accordion
+            $("#panel").accordion({
+                collapsible:true,
+                //event:"mouseover",
+                animate:500,
+                heightStyle:true,
+                icons:{header:"ui-icon-plus",activeHeader:"ui-icon-minus"}
+            });
+
+            //MessageBox
+            $("#btn1").click(function(){
+                //alert();
+                $("#messageBox").dialog({
+                    title:"aaa",
+                    draggable:false,
+                    resizeable:true,
+                    height:300,
+                    modal:true,
+                    buttons:[
+                        {
+                            text:"close",
+                            icon:"ui-icon-heart",
+                            click: function(){
+                                $(this).dialog("close");
+                            }
+
+                        },
+                        {
+                            text:"ok",
+                            icon:"ui-icon-heart",
+                            click: function(){
+                                alert("hello");
+                            }
+                        }
+                    ]
+                });
+            });
+
+            //Autocomplete
+            var cities = ["mumbai","chennai","kolkata","bangalore"];
+            $("#cityText").autocomplete({
+                source: cities,
+            },
+            {
+                autoFocus:true
+            });
+
+            //getters and setters
+            // var height = $("#dateinput").datepicker( "option", "title" );
+            // alert(height);
+            //$( ".selector" ).dialog( "option", "height", 400 ); 
+
+            //draggable
+            $("#div4").draggable({
+                cursor:"grabbing"
+            });
+
+
+      });
+
+    </script>
+</html>
